@@ -44,3 +44,8 @@ obj-y += vl53l1/core/src/vl53l1_error_strings.o
 obj-y += vl53l1/core/src/vl53l1_register_funcs.o
 obj-y += vl53l1/core/src/vl53l1_silicon_core.o
 obj-y += vl53l1/core/src/vl53l1_wait.o
+
+# Zenoh-Pico
+zenoh_pico_src := $(shell cd ../src/lib; find -L zenoh-pico/src -not -path 'zenoh-pico/src/system/*' -name '*.c')
+zenoh_pico_src += $(shell cd ../src/lib; find -L zenoh-pico/src/system/freertos_plus_tcp -name '*.c')
+obj-y += $(patsubst %.c,%.o,$(zenoh_pico_src))

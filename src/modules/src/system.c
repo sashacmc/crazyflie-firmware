@@ -73,6 +73,7 @@
 #include "i2cdev.h"
 #include "autoconf.h"
 #include "vcp_esc_passthrough.h"
+#include "zenoh.h"
 #if CONFIG_ENABLE_CPX
   #include "cpxlink.h"
 #endif
@@ -324,6 +325,8 @@ void systemTask(void *arg)
     }
   }
   DEBUG_PRINT("Free heap: %d bytes\n", xPortGetFreeHeapSize());
+
+  zenohInit();
 
   workerLoop();
 
